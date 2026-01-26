@@ -1,4 +1,4 @@
-# Vietnam National University - Ho Chi Minh City University of Science
+![Logo](assets/VNUHCMUS.png)
 
 ## Data Structures & Algorithms
 ### Basic Information
