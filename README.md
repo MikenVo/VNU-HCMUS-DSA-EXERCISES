@@ -1,2 +1,32 @@
-# VNU-HCMUS-DSA-EXERCISES
+# \# Vietnam National University - Ho Chi Minh City University of Science
+
+# \## Fundamentals of Programming
+
+# 
+
+# \### Basic Information
+
+# This repository contains the exercises for the \*\*Data Structures \& Algorithms\*\* course at \*\*VNU-HCMUS\*\*.
+
+# \*\*Programming Language\*\*: \*\*C++\*\*
+
+# \*\*IDE\*\*: \*\*Visual Studio\*\*
+
+# 
+
+# \### Author
+
+# \- \*\*Vo Thien Tri Nhan\*\*
+
+# 
+
+# \### Date
+
+# \- \*\*26-01-2025 -> NOW\*\*
+
+# 
+
+# \### Contact
+
+# \- \*\*Email\*\*: vttnhan2518@clc.fitus.edu.vn
 
