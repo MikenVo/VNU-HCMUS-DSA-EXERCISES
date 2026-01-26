@@ -1,3 +1,5 @@
+// Problem: Print out the sum of a given array using only Recursion
+
 #include <iostream>
 using namespace std;
 
