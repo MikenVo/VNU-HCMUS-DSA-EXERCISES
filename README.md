@@ -11,7 +11,7 @@ Source: [Vietnam National University, Ho Chi Minh City - University of Science](
 #### 🖥️ Repository Information
 This repository contains the exercises for the **Data Structures \& Algorithms** course at **VNU-HCMUS**. This is the only programming subject in the first-year, second-semester curriculum.  
 **Programming Language**: C++  
-**IDE**: **Visual Studio**  
+**IDE**: Microsoft Visual Studio 2026  
 **Author**: [Võ Thiện Trí Nhân](https://github.com/MikenVo)  
 **Date**: 26-01-2025 -> NOW
 ##### ⌛ Topics
