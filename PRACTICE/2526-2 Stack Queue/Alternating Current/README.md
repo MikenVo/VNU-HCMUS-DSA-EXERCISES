@@ -1,10 +1,17 @@
-# B. Alternating Current
-time limit per test: 1 second  
-memory limit per test: 256 megabytes  
+# <p align="center"> B. Alternating Current </p>
+
+<p align="center">
+time limit per test: 1 second
+</p>
+<p align="center">
+memory limit per test: 256 megabytes
+</p>
   
 Mad scientist Mike has just finished constructing a new device to search for extraterrestrial intelligence! He was in such a hurry to launch it for the first time that he plugged in the power wires without giving it a proper glance and started experimenting right away. After a while Mike observed that the wires ended up entangled and now have to be untangled again.  
   
 The device is powered by two wires "plus" and "minus". The wires run along the floor from the wall (on the left) to the device (on the right). Both the wall and the device have two contacts in them on the same level, into which the wires are plugged in some order. The wires are considered entangled if there are one or more places where one wire runs above the other one. For example, the picture below has four such places (top view):  
+
+<p align="center"><img src="subassets/illustration1.jpg" alt="Illustration"></p>
 
 Mike knows the sequence in which the wires run above each other. Mike also noticed that on the left side, the "plus" wire is always plugged into the top contact (as seen on the picture). He would like to untangle the wires without unplugging them and without moving the device. Determine if it is possible to do that. A wire can be freely moved and stretched on the floor, but cannot be cut.  
   
@@ -15,35 +22,34 @@ The single line of the input contains a sequence of characters "+" and "-" of le
 Print either "Yes" (without the quotes) if the wires can be untangled or "No" (without the quotes) if the wires cannot be untangled.  
   
 ### Examples  
-InputCopy  
+*InputCopy*  
 -++-  
-OutputCopy  
+*OutputCopy*  
 Yes  
   
-InputCopy  
+*InputCopy*  
 +-  
-OutputCopy  
+*OutputCopy*  
 No  
   
-InputCopy  
+*InputCopy*  
 ++  
-OutputCopy  
+*OutputCopy*  
 Yes  
   
-InputCopy  
--  
-OutputCopy  
+*InputCopy*  
+\-  
+*OutputCopy*  
 No  
   
 ### Note
 The first testcase corresponds to the picture in the statement. To untangle the wires, one can first move the "plus" wire lower, thus eliminating the two crosses in the middle, and then draw it under the "minus" wire, eliminating also the remaining two crosses.
 
 In the second testcase the "plus" wire makes one full revolution around the "minus" wire. Thus the wires cannot be untangled:
-
+<p align="center"><img src="subassets/illustration2.jpg" alt="Illustration"></p>
 
 In the third testcase the "plus" wire simply runs above the "minus" wire twice in sequence. The wires can be untangled by lifting "plus" and moving it higher:
-
+<p align="center"><img src="subassets/illustration3.jpg" alt="Illustration"></p>
 
 In the fourth testcase the "minus" wire runs above the "plus" wire once. The wires cannot be untangled without moving the device itself:
-
-
+<p align="center"><img src="subassets/illustration4.jpg" alt="Illustration"></p>
