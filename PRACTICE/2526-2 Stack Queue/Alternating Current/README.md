@@ -22,25 +22,45 @@ The single line of the input contains a sequence of characters "+" and "-" of le
 Print either "Yes" (without the quotes) if the wires can be untangled or "No" (without the quotes) if the wires cannot be untangled.  
   
 ### Examples  
-*InputCopy*  
--++-  
-*OutputCopy*  
-Yes  
-  
-*InputCopy*  
-+-  
-*OutputCopy*  
-No  
-  
-*InputCopy*  
-++  
-*OutputCopy*  
-Yes  
-  
-*InputCopy*  
-\-  
-*OutputCopy*  
-No  
+*Input*  
+```
+-++-
+```  
+*Output*  
+```
+Yes
+```  
+---
+
+*Input*  
+```
++-
+```  
+*Output*  
+```
+No
+```  
+---
+
+*Input*  
+```
+++
+```  
+*Output*  
+```
+Yes
+```
+---
+
+*Input*  
+```
+-
+```  
+*Output*  
+```
+No
+```
+---
   
 ### Note
 The first testcase corresponds to the picture in the statement. To untangle the wires, one can first move the "plus" wire lower, thus eliminating the two crosses in the middle, and then draw it under the "minus" wire, eliminating also the remaining two crosses.
