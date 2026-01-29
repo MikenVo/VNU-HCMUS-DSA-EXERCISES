@@ -2,11 +2,11 @@
 <p align="center">time limit per test: 1 s.</p>
 <p align="center">memory limit per test: 16 MB</p>
 
-Given an integer array of length n and q query values x<sub>1</sub>,x<sub>2</sub>,…,x<sub>q</sub>, your task is to find, for each query x<sub>j</sub>, the element in the array whose value is closest to x<sub>j</sub>. If two or more elements are equally close (i.e., their absolute difference to x<sub>j</sub> is the same), you must select the largest such element by value.  
+Given an integer array of length n and q query values x<sub>1</sub>, x<sub>2</sub>, … , x<sub>q</sub>, your task is to find, for each query x<sub>j</sub>, the element in the array whose value is closest to x<sub>j</sub>. If two or more elements are equally close (i.e., their absolute difference to x<sub>j</sub> is the same), you must select the largest such element by value.  
   
 ## Input
 The input begins with a line containing two integers: n and q.  
-The next line contains n space-separated integers a<sub>1</sub>,a<sub>2</sub>,…,a<sub>n</sub>.  
+The next line contains n space-separated integers a<sub>1</sub>, a<sub>2</sub>, … , a<sub>n</sub>.  
 Each of the following q lines contains one integer x<sub>j</sub>.  
 
 ## Output
