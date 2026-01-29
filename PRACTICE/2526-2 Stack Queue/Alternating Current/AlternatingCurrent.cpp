@@ -87,6 +87,7 @@ int main() {
 		cout << "No" << endl;
 	}
 
+	delete[] str;
 	deleteList(l);
 
 	return 0;
