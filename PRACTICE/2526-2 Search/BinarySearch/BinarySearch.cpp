@@ -6,8 +6,20 @@
 
 using namespace std;
 
+// Use binary search
 int binarySearchNearest(const vector<int>& a, int n, int x) {
+	// Initialization
 	int left = 0, right = n - 1, middle = (left + right) / 2;
+
+	// Stop when the algorithm finds two "closest" number
+	// Input: 5 1
+	//		  1 5 3 22 23
+	//		  24
+	//
+	// n = 5, q = 1
+	// a = [1, 5, 3, 22, 23]
+	// x (target) = 24
+	// left = 0, right = 4, middle = 2 (at 
 	while (abs(left - right) != 1) {
 		if (a[middle] == x) {
 			return a[middle];
