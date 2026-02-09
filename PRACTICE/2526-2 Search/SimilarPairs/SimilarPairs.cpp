@@ -1,14 +1,7 @@
 #include <iostream>
 using namespace std;
 
-bool isSimilar(int firstnumber, int secondnumber) {
-	int remainder1 = firstnumber % 2, remainder2 = secondnumber % 2;
-	if ((abs(firstnumber - secondnumber) == 1) || (remainder1 == remainder2)) {
-		return true;
-	}
-	return false;
-}
-
+// Bubble sort
 void sorted(int arr[], int n) {
 	bool swapped = false;
 	for (int i = 0; i < n; i++) {
@@ -29,47 +22,67 @@ void sorted(int arr[], int n) {
 }
 
 int main() {
-	int testcases; cin >> testcases;
-	int eachtest;
-	for (int k = 0; k < testcases; k++) {
-		bool HasSimilar = false;
+	int testcases = 0; cin >> testcases;
+	for (int attempt = 0; attempt < testcases; attempt++) {
+		int n;
+		cin >> n;			   // Input the length of the array
+		int *arr = new int[n]; // Memory-allocated array
 
-		cin >> eachtest;
-		if (eachtest % 2 != 0) {
-			return 1;
+		for (int i = 0; i < n; i++) {
+			cin >> arr[i];
 		}
 
-		int* test = new int[eachtest];
-		for (int i = 0; i < eachtest; i++) {
-			cin >> test[i];
-		}
-
-		sorted(test, eachtest);
-
-		int checkpair = 1;
-
-		for (int i = 0; i < eachtest - 1; i += 2) {
-			for (int j = checkpair; j < eachtest; j++) {
-				if (isSimilar(test[i], test[j])) {
-					HasSimilar = true;
-					break;
-				}
-				else {
-					HasSimilar = false;
-				}
-			}
-
-			if (!HasSimilar) {
-				cout << "No" << endl;
-				break;
+		int odd_num = 0; // We need to count the number of odd numbers
+						 // If the number of odd numbers is even, we can output "Yes"
+						 // Example [1, 2, 5, 6]
+						 // - Even numbers: 2
+						 // - Odd numbers: 2
+						 // - Similar pairs: (1, 2)-(5, 6) or (1, 5)-(2, 6)
+		for (int i = 0; i < n; i++) {
+			if (arr[i] % 2 != 0) {
+				odd_num++;
 			}
 			else {
-				checkpair += 2;
+				continue;
 			}
 		}
 
-		if (HasSimilar) {
+		bool HasSimilarPairs = true;
+		if (odd_num % 2 == 0) {
 			cout << "Yes" << endl;
+		}
+		else {
+			// The number of odd numbers is odd, we need to check if there is a pair that satisfies the difference is 1
+			// Example: [1, 12, 3, 10, 5, 8]
+			// - Odd numbers: 3 (1, 3, 5)
+			// - Even numbers: 3 (8, 10, 12)
+			// - Similar pairs: (1, 3)-(12, 10)- 5, 8 is left over. (1, 5)-(12, 8)-10, 3 is left over
+			
+			// Example 2: [1, 6, 3, 10, 5, 8]
+			// - Odd numbers: 3 (1, 3, 5)
+			// - Even numbers: 3 (6, 8, 10)
+			// - Similar pairs: (1, 3)-(5, 6)-(8, 10)
+			sorted(arr, n); // Sort the array to find the target pair (the difference of two numbers == 1) quick
+			for (int i = 0; i < n - 1; i++) {
+				for (int j = 1; j < n; j++) {
+					if (abs(arr[i] - arr[j]) == 1) { // If we find it, immediately print out "Yes"
+						cout << "Yes" << endl;
+						HasSimilarPairs = true;
+						break;
+					}
+					else {
+						HasSimilarPairs = false; // If we haven't found it, search through the array
+					}
+				}
+
+				if (HasSimilarPairs) {
+					break;
+				}
+			}
+
+			if (!HasSimilarPairs) { // If there is no such pair in the array, print out "No"
+				cout << "No" << endl;
+			}
 		}
 	}
 
