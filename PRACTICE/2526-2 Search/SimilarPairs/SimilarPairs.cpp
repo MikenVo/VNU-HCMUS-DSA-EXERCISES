@@ -84,7 +84,8 @@ int main() {
 				cout << "No" << endl;
 			}
 		}
-	}
 
+		delete[] arr;
+	}
 	return 0;
 }
