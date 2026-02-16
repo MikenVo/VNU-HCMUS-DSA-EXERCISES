@@ -9,7 +9,7 @@ The first line contains one integer n (1 ≤ n ≤ 105). The second line contain
 ## Output
 Print a single integer: the number of pairs (i,j) such that i< j and A<sub>i</sub> > A<sub>j</sub>.
 
-### Examples
+## Examples
 *Input*
 ```
 6  
@@ -48,5 +48,5 @@ Print a single integer: the number of pairs (i,j) such that i< j and A<sub>i</su
 
 ---
 
-### Note
+## Note
 The answer can be as large as $\frac{n(n-1)}{2}$, so use 64-bit signed arithmetic.

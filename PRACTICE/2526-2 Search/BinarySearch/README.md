@@ -12,7 +12,7 @@ Each of the following q lines contains one integer x<sub>j</sub>.
 ## Output
 For each query x<sub>j</sub> (in the order given), output on its own line the value from the array that is closest to x<sub>j</sub>, breaking ties by selecting the largest value among those tied.
 
-### Example
+## Example
 *Input*  
 ```
 21 21  
@@ -45,7 +45,7 @@ For each query x<sub>j</sub> (in the order given), output on its own line the va
 ```
 ---
 
-### Note
+## Note
 You are ALLOWED to use built-in sort function from STL of C++.  
 You must implement your own searching logic (e.g., binary search or two-pointer scan). Use of built-in algorithms such as std::lower_bound, or std::binary_search is strictly prohibited.  
 Constraints: 1 ≤ n, q ≤ 105 and all array values and query values lie within [−10<sup>9</sup>,10<sup>9</sup>].    
