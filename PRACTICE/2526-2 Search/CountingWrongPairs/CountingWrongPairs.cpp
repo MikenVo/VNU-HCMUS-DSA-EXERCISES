@@ -1,3 +1,5 @@
+// Read README.md in https://github.com/MikenVo/VNU-HCMUS-DSA-EXERCISES/tree/main/PRACTICE/2526-2%20Search/CountingWrongPairs to know the problem
+
 #include <iostream>
 using namespace std;
 
