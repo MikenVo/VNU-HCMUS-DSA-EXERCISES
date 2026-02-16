@@ -19,7 +19,12 @@ int binarySearchNearest(const vector<int>& a, int n, int x) {
 	// n = 5, q = 1
 	// a = [1, 5, 3, 22, 23]
 	// x (target) = 24
-	// left = 0, right = 4, middle = 2 (at 
+	// left = 0, right = 4, middle = 2 (a[middle] = 3 < x)
+	// - a[left] != x, a[right] != x, a[middle] != x
+	// left = middle = 2, right = 4, middle = 3 (a[middle] = 22 < x)
+	// - a[left] != x, a[right] != x, a[middle] != x
+	// left = middle = 3, right = 4, middle = 3 (a[middle] = 22 < x)
+	// - a[left] != x, a[right] != x, a[middle] != x
 	while (abs(left - right) != 1) {
 		if (a[middle] == x) {
 			return a[middle];
@@ -34,7 +39,12 @@ int binarySearchNearest(const vector<int>& a, int n, int x) {
 		}
 	}
 
-	int diff1 = abs(a[left] - x), diff2 = abs(a[right] - x);
+	// We have found two elements which are close to the target (a[left] = 22, a[right] = 23)
+	// We need to calculate the differences and compare them to find the closest element
+	// To know which element is larger than the other, we need to compare the differences.
+	// - The larger the difference, the smaller the value
+	// - The smaller the difference, the larger the value
+	int diff1 = abs(a[left] - x), diff2 = abs(a[right] - x); // diff1 = abs(22 - 24) = 2, diff2 = abs(23 - 24) = 1
 	if (diff1 > diff2) {
 		return a[right];
 	}
