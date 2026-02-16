@@ -8,7 +8,7 @@ Note that the sequence can contain equal elements.
   
 If there is no such **x**, print "-1" (without quotes).
 
-<hr style="height:4px; background-color:gray; border:none;" />
+---
 
 ## Input
 The first line of the input contains integer numbers **n** and **k** (**1 ≤ n ≤ $2 \times 10^5$**, **0 ≤ k ≤ n**). The second line of the input contains **n** integer numbers a<sub>1</sub>, a<sub>2</sub>,…, a<sub>n</sub> (**1 ≤ a<sub>i</sub> ≤ $10^9$**) — the sequence itself.
@@ -17,7 +17,7 @@ The first line of the input contains integer numbers **n** and **k** (**1 ≤ n 
 Print **any integer** number **x** from range [1;$10^9$] such that exactly **k** elements of given sequence is less or equal to **x**.
 If there is no such **x**, print "-1" (without quotes).
 
-<hr style="height:4px; background-color:gray; border:none;" />
+---
 
 ## Examples
 *Input*
@@ -31,7 +31,7 @@ If there is no such **x**, print "-1" (without quotes).
 6
 ```
 
-___
+**<p align="center"> ~~~~~~~~~~~ </p>**
 
 *Input*
 ```
@@ -44,7 +44,7 @@ ___
 -1
 ```
 
-<hr style="height:4px; background-color:gray; border:none;" />
+---
 
 
 ## Note
