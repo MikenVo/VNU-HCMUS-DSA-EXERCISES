@@ -1,103 +1,72 @@
 #include <iostream>
+#include <vector>
+#include <utility>
+
 using namespace std;
 
-// void merge(int arr[], int left, int mid, int right, int num) {
-//     int n1 = mid - left + 1;
-//     int n2 = right - mid;
+// TODO: auxiliary function here
 
-//     int* LEFT = new int[n1];
-//     int* RIGHT = new int[n2];
+void inPlaceMerge(vector<int> &a, int start, int mid, int end) {
+    int gap, firstindex, secondindex;
 
-//     for (int i = 0; i < n1; i++) {
-//         LEFT[i] = arr[left + i];
-//     }
+    for (gap = mid + 1; gap >= 1; gap /= 2) {
+        for (int i = gap; i < end + 1; i++) {
+            int temp = a[i];
+            int j;
+            for (j = i, firstindex = j; j >= gap && a[j - gap] > temp; j -= gap) {
+                a[j] = a[j - gap];
+                secondindex = j - gap;
+            }
+            a[j] = temp;
 
-//     for (int j = 0; j < n2; j++) {
-//         RIGHT[j] = arr[mid + 1 + j];
-//     }
-
-//     int i = 0, j = 0, k = left;
-//     int firstindex = 0, secondindex = 0;
-//     while (i < n1 && j < n2) {
-//         if (LEFT[i] <= RIGHT[j]) {
-//             for (int i1 = 0; i1 < num; i1++) {
-//                 if (arr[i1] == LEFT[i]) {
-//                     firstindex = i1;
-//                     break;
-//                 }
-//             }
-//             arr[k++] = LEFT[i++];
-//         }
-//         else {
-//             for (int i2 = 0; i2 < num; i2++) {
-//                 if (arr[i2] == RIGHT[j]) {
-//                     secondindex = i2;
-//                     break;
-//                 }
-//             }
-//             arr[k++] = RIGHT[j++];
-//         }
-
-//         if (firstindex > secondindex) {
-//             cout << secondindex << " " << firstindex << endl;
-//         }
-//         else if (firstindex < secondindex) {
-//             cout << firstindex << " " << secondindex << endl;
-//         }
-//     }
-
-//     while (i < n1) {
-//         arr[k++] = LEFT[i++];
-//     }
-
-//     while (j < n2) {
-//         arr[k++] = RIGHT[j++];
-//     }
-
-//     delete[] LEFT;
-//     delete[] RIGHT;
-// }
-
-// void mergeSort(int arr[], int left, int right, int num) {
-//     if (left < right) {
-//         int mid = left + (right - left) / 2;
-//         mergeSort(arr, left, mid, num);
-//         mergeSort(arr, mid + 1, right, num);
-//         merge(arr, left, mid, right, num);
-//     }
-// }
-
-void mergeSort(int arr[], int left, int right, int num) {
-    int mid = left + (right - left) / 2;
-    if (left < right) {
-        mergeSort(arr, left, mid, num);
-        mergeSort(arr, mid + 1, right, num);
-    }
-    else {
-        if (arr[left] > arr[right + 1]) {
-            int temp = arr[left];
-            arr[left] = arr[right];
-            arr[right] = temp;
+            if (firstindex >= 0 && secondindex >= 0) {
+                if (firstindex > secondindex) {
+                    cout << secondindex << " " << firstindex << endl;
+                }
+                else if (firstindex < secondindex) {
+                    cout << firstindex << " " << secondindex << endl;
+                }
+            }
+            else {
+                continue;
+            }
         }
     }
+    // TODO: inPlaceMerge logic, swapping and printing swapped positions here
+}
+
+void mergeSort(vector<int> &a, int start, int end) {
+    int mid = start + (end - start) / 2;
+    while (start < end) {
+        if (end - start == 1 && mid >= 0) {
+            inPlaceMerge(a, start, mid, end);
+            
+        }
+        else {
+            mergeSort(a, start, mid);
+            mergeSort(a, mid + 1, end);
+        }
+    }
+    // TODO: Merge sort with in-place merge calling here
 }
 
 int main() {
-    int num; cin >> num;
-    int* arr = new int[num];
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr);
 
-    for (int i = 0; i < num; i++) {
-        cin >> arr[i];
+    int n;
+    if (!(cin >> n))
+        return 0;
+    vector<int> a(n);
+    for (int i = 0; i < n; ++i) {
+        cin >> a[i];
     }
 
-    int left = 0, right = num - 1;
-    mergeSort(arr, left, right, num);
+    mergeSort(a, 0, n - 1);
 
-    for (int i = 0; i < num; i++) {
-        cout << arr[i] << " ";
-    }
-
-    delete[] arr;
+    // for (int i = 0; i < n; i++) {
+    //     cout << a[i] << " ";
+    // }
 
     return 0;
 }
