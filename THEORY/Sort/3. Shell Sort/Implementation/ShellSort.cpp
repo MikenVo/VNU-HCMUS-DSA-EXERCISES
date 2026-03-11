@@ -7,12 +7,13 @@ void ShellSort(int arr[], int n) {
     int gap = n / 2; // Store the initial gap
     while (gap >= 1) { // The loop stops when the gap < 1
         // Insertion sort between elements stand gap intervals
-        for (int i = gap; i < n; i += gap) {
+        for (int i = gap; i < n; i++) {
             int j = i;
-            while (arr[j] < arr[j - gap] && j > 0) {
+            while (j > 0 && arr[j] < arr[j - gap]) {
                 int temp = arr[j];
                 arr[j] = arr[j - gap];
                 arr[j - gap] = temp;
+
                 j -= gap;
             }
         }
