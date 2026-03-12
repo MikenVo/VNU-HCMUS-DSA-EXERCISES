@@ -8,7 +8,7 @@ You love fish, that's why you have decided to build an aquarium. You have a piec
 
 For example, with $a = [3, 1, 2, 4, 6, 2, 5]$ and a height of $h = 4$, you will end up using a total of $w = 8$ units of water, as shown.
 
-<img src=''>
+<p align='center'><img src='https://raw.githubusercontent.com/MikenVo/VNU-HCMUS-DSA-EXERCISES/main/EXAMINATIONS/Midterm/assets/BuildingAnAquarium.webp' width='25%'></p>
 
 You can use at most $x$ units of water to fill up the tank, but you want to build the biggest tank possible. What is the largest value of $h$ you can select?
 
