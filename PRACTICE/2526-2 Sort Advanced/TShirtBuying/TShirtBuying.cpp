@@ -60,9 +60,6 @@ void mergeSort(Tshirt arr[], int left, int right) {
 int main() {
     // Seller inputs
     int numTshirt; cin >> numTshirt; // Input the number of T-shirts
-    // int* priceTshirt = new int[numTshirt]; // Array for the price of each T-shirts
-    // int* frontcolor = new int[numTshirt]; // Array for the front color of each T-shirts
-    // int* backcolor = new int[numTshirt]; // Array for the back color of each T-shirts
 
     Tshirt* tshirt = new Tshirt[numTshirt];
 
