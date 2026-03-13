@@ -44,31 +44,37 @@ int main() {
     for (int test = 0; test < t; test++) {
         int n; cin >> n; // Input the length of array a
         int lenb = n * (n - 1) / 2; // Calculate the length of array b
-        int cur = 0;
-        int counter = 0;
+        int skip = 0, counter = 0, step = n - 1;
 
         int* array_a = new int[n](); // Initialize the array a
         int* array_b = new int[lenb + 1](); // Initialize the array b
 
+        // Input array
         for (int i = 0; i < lenb; i++) {
             cin >> array_b[i];
         }
 
+        // Sort the array b
         MergeSort(array_b, 0, lenb - 1);
 
-        cur = array_b[0];
-        array_a[counter] = cur;
+        if (n != 2) { // If n == 2, we guarantee that the size of array b is 1
+            while (counter <= n - 1) {
+                array_a[counter] = array_b[skip]; // Assign the current element after skips
 
-        for (int i = 0; i < lenb + 1; i++) {
-            if (array_b[i] != cur) {
+                skip += step; // Adjust the skip to find new element
+                step--;
+
                 counter++;
-                cur = array_b[i];
-                array_a[counter] = cur;
             }
+            array_a[n - 1] = 1000000000; // Set the last element to the 1000000000. We guarantee the result will always be valid
         }
+        else {
+            // Because the size of array is 1, we just duplicate the elements to get the array a
+            array_a[0] = array_b[0];
+            array_a[1] = array_b[0];
+        }   
 
-        array_a[counter] = array_a[n - 2] + array_a[n - 1];
-
+        // Print out
         for (int i = 0; i < n; i++) {
             cout << array_a[i] << " ";
         }
