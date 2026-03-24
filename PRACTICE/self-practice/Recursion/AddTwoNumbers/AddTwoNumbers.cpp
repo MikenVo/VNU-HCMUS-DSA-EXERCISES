@@ -54,37 +54,35 @@ void printlist(Node* pHead) {
     cout << endl;
 }
 
-void Calculate(Node* &list1, Node* &list2, Node* &pHead) {
+Node* Calculate(Node* list1, Node* list2) {
+    const Node* head = list1;
     int sum = 0;
     int add_element = 0;
     int carry = 0;
+    Node* cur = list1;
     
 
     if (list1 == nullptr && list2 == nullptr) {
-        return;
+        return head;
     }
     else {
-        if (list1 == nullptr) {
-            list1->data = 0;
-        }
-        else if (list2 == nullptr) {
-            list2->data = 0;
-        }
-
         sum = (list1->data + list2->data) + carry;
         add_element = sum % 10;
         carry = sum / 10;
 
-        AddTail(pHead, add_element);
+        cur->data = add_element;
+
+        if (cur->pNext == nullptr && list2->pNext != nullptr) {
+            AddTail(cur, add_element);
+        }
     }
 
-    return Calculate(list1->pNext, list2->pNext, pHead);
+    return Calculate(list1->pNext, list2->pNext);
 }
 
 int main() {
     List l1;
     List l2;
-    List l3;
     int m;
     int len1;
     int len2;
@@ -93,7 +91,6 @@ int main() {
 
     Init(l1);
     Init(l2);
-    Init(l3);
 
     cin >> len1;
     for (int i = 0; i < len1; i++) {
@@ -110,13 +107,12 @@ int main() {
     list1 = l1.pHead;
     list2 = l2.pHead;
     
-    Calculate(list1, list2, l3.pHead);
+    Calculate(list1, list2);
 
-    printlist(l3.pHead);
+
 
     deleteList(l1);
     deleteList(l2);
-    deleteList(l3);
 
     return 0;
 }
