@@ -50,12 +50,14 @@ void deleteList(List &l) {
     cur = nullptr;
 }
 
+// Linked list search
 bool ListSearch(int len) {
+    // Initialization
     int num;
     int target;
     List l;
 
-    Init(l);
+    Init(l); // Initialize the linked list, set the pHead to nullptr
 
     // Input linked list
     cout << "Input the list: ";
@@ -64,19 +66,22 @@ bool ListSearch(int len) {
         AddTail(l, num);
     }
 
+    // Input the target
     cout << "Input your target number: "; cin >> target;
 
+    // Use linear search to find the target number in the linked list
     Node* cur = l.pHead;
-    while (cur != nullptr) {
-        if (target == cur->data) {
-            deleteList(l);
-            return true;
+    while (cur != nullptr) {  // Continue searching until the pointer 'cur' reaches nullptr
+        if (target == cur->data) { // If the target number is found
+            deleteList(l); // Delete the list
+            return true; // Return true
         }
         cur = cur->pNext;
     }
 
+    // Still delete the list is the target number is not found
     deleteList(l);
-    return false;
+    return false; // Return false
 }
 
 // Array search
@@ -104,10 +109,12 @@ bool ArrSearch(int len) {
 }
 
 int main() {
+    // Let the user input the data structure they want to use to apply linear search
     int query;
     cout << "Press 0 to apply linear search to an array, 1 to apply linear search to a linked list: ";
     cin >> query;
 
+    // If the query is not valid, tell the user and exit the program
     if (query != 0 && query != 1) {
         cout << "Invalid input!" << endl;
         return 1;
@@ -116,20 +123,22 @@ int main() {
     // Input the number of elements
     int len; cout << "Input the number of elements: "; cin >> len;
 
+    // Array linear search
     if (query == 0) {
         if (ArrSearch(len)) {
-            cout << "We found the target number!" << endl;
+            cout << "We found the target number!" << endl; // Print this when the element is found
         }
         else {
-            cout << "The target number is not available!" << endl;
+            cout << "The target number is not available!" << endl; // Print this when the element is not found
         }
     }
+    // Linked list linear search
     else if (query == 1) {
         if (ListSearch(len)) {
-            cout << "We found the target number!" << endl;
+            cout << "We found the target number!" << endl; // Print this when the element is found
         }
         else {
-            cout << "The target number is not available!" << endl;
+            cout << "The target number is not available!" << endl; // Print this when the element is not found
         }
     }
 
