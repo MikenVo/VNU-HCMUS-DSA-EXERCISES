@@ -1,0 +1,16 @@
+PSEUDOCODE
+
+INPUT n
+FUNC PRINTPARTITION(n) [We use this to call the recursion, make the code look less complex]
+
+FUNC FINDPARTITION(target, max_val, current_partition) 
+    [target is the number we want to find available partitions]
+    [max_val is the largest number, we add this to ensure the upper bound]
+    [current_parition is a list containing the parition]
+
+    [BASE CASE]
+    IF target == 0 [This means we found a valid partition]
+        PRINT THE PARTITION WITH '+'
+        RETURN;
+    
+    INITIALIZE start_val
