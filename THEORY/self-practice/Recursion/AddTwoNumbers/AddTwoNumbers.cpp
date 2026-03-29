@@ -2,7 +2,7 @@
 using namespace std;
 
 struct Node {
-    int data;
+    int data = 0;
     Node* pNext;
 };
 
@@ -29,7 +29,7 @@ void AddTail(Node* &pHead, int data) {
     while (cur->pNext != nullptr) {
         cur = cur->pNext;
     }
-    cur = node;
+    cur->pNext = node;
 }
 
 void Init(List &l) {
@@ -54,23 +54,52 @@ void printlist(Node* pHead) {
     cur = nullptr;
 }
 
-void Calculate(Node* &list1, Node* &list2) {
-    int sum = 0;
-    int add_element = 0;
-    int carry = 0;
-    List l3;
-    l3.pHead = nullptr;
+Node* Calculate(Node* List1, Node* List2) {
+    int sum = 0, add_element = 0, carry = 0;
+    Node* head = List1;
+    
+    // 2 - 4 - 3
+    // 5 - 6 - 4
+    // 243 + 564 = 807
+    // 7 - 0 - 8
 
-    while (list1 != nullptr || list2 != nullptr) {
-        sum = (list1->data + list2->data) + carry;
-        add_element = sum % 10;
-        carry = sum / 10;
+    while (List1 != nullptr || List2 != nullptr) {
+        if (List1 == nullptr && List2 != nullptr) {
+            sum = (List2->data) + carry;
+            add_element = sum % 10;
+            carry = sum / 10;
 
-        AddTail(l3.pHead, add_element);
+            AddTail(head, add_element);
+        }
+        else if (List1 != nullptr && List2 == nullptr) {
+            sum = (List1->data) + carry;
+            add_element = sum % 10;
+            carry = sum / 10;
+
+            List1->data = add_element;
+        }
+        else {
+            sum = (List1->data + List2->data) + carry;
+            add_element = sum % 10;
+            carry = sum / 10;
+
+            List1->data = add_element;
+        }
+
+        if (List1 != nullptr) {
+            List1 = List1->pNext;
+        }
+
+        if (List2 != nullptr) {
+            List2 = List2->pNext;
+        }
     }
 
-    printlist(l3.pHead);
-    deleteList(l3.pHead);
+    if (carry != 0) {
+        AddTail(head, carry);
+    }
+
+    return head;
 }
 
 int main() {
@@ -79,8 +108,6 @@ int main() {
     int m;
     int len1;
     int len2;
-    Node *list1;
-    Node *list2;
 
     Init(l1);
     Init(l2);
@@ -97,9 +124,7 @@ int main() {
         AddTail(l2.pHead, m);
     }
 
-    list1 = l1.pHead;
-    list2 = l2.pHead;
-    Calculate(list1, list2);
+    printlist(Calculate(l1.pHead, l2.pHead));
 
     deleteList(l1.pHead);
     deleteList(l2.pHead);
