@@ -54,31 +54,7 @@ void printlist(Node* pHead) {
     cout << endl;
 }
 
-Node* Calculate(Node* list1, Node* list2) {
-    const Node* head = list1;
-    int sum = 0;
-    int add_element = 0;
-    int carry = 0;
-    Node* cur = list1;
-    
 
-    if (list1 == nullptr && list2 == nullptr) {
-        return head;
-    }
-    else {
-        sum = (list1->data + list2->data) + carry;
-        add_element = sum % 10;
-        carry = sum / 10;
-
-        cur->data = add_element;
-
-        if (cur->pNext == nullptr && list2->pNext != nullptr) {
-            AddTail(cur, add_element);
-        }
-    }
-
-    return Calculate(list1->pNext, list2->pNext);
-}
 
 int main() {
     List l1;
