@@ -109,7 +109,7 @@ int main() {
         }
         else if (command == 2) {
             char* type = new char[4]();
-            cin.getline(type, 4);
+            cin >> type;
 
             if (strcmp(type, "LNR") == 0) {
                 inorder(l.root);
@@ -121,6 +121,8 @@ int main() {
                 postorder(l.root);
             }
             cout << '\n';
+
+            delete[] type;
         }
         else if (command == 3) {
             int addnum = 0;
