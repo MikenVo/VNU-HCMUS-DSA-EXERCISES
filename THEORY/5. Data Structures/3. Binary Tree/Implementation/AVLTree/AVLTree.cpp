@@ -6,6 +6,7 @@ struct Node {
     int data; // Store the value of the node
     Node* pLeft; // Points to the left node
     Node* pRight; // Points to the right node
+    int height; // Store the height of a node
 };
 
 struct List {
@@ -18,6 +19,7 @@ Node* CreateNode(int data) {
     newnode->data = data;
     newnode->pLeft = nullptr;
     newnode->pRight = nullptr;
+    newnode->height = 1;
     return newnode;
 }
 
@@ -98,16 +100,16 @@ void postorder(Node* pRoot) {
 // Time complexity:
 // - Best case: The value is on the root node (O(1))
 // - Worst case: The tree is either increasing or decreasing (Linked List) (O(n))
-bool BinaryTreeSearch(Node* pRoot, int target) {
+bool Search(Node* pRoot, int target) {
     if (pRoot == nullptr) { // We encounter the leaf node, but cannot find the element
         return false; // Set false
     }
 
     if (target < pRoot->data) { // The target is smaller that the current node's data
-        return BinaryTreeSearch(pRoot->pLeft, target); // We move left
+        return Search(pRoot->pLeft, target); // We move left
     }
     else if (target > pRoot->data) { // The target is larger that the current node's data
-        return BinaryTreeSearch(pRoot->pRight, target); // We move right
+        return Search(pRoot->pRight, target); // We move right
     }
     else { // If we reach this part, it is guaranteed that we have found the target
         return true; // Set true
@@ -134,6 +136,41 @@ void successor(Node *pRoot) {
         cur = cur->pLeft;
     }
     cout << "Successor: " << cur->data << endl; // Print out the leftmost value
+}
+
+// ----------  Rotation ----------
+// We need to extract the height of the specific node to use for balance calculation
+int height(Node* pRoot) {
+    if (pRoot == nullptr) {
+        return 0;
+    }
+    else {
+        return pRoot->height;
+    }
+}
+
+int balance(Node* pRoot) {
+    if (pRoot == nullptr) {
+        return 0;
+    }
+    else {
+        // The reason we only need to extract the height of the left and right nodes
+        // - The heights of those nodes are updated right away when a new child joins the family
+        return height(pRoot->left) - height(pRoot->right);
+    }
+}
+
+void LL (Node* &pRoot) {
+    Node* newRoot = pRoot;
+    Node* newRootRight = newRoot->right;
+
+    
+}
+
+void rotation(Node* &pRoot) {
+    int balancepoint = balance(pRoot);
+
+
 }
 
 // ----------  Deletion ----------
@@ -214,7 +251,7 @@ int main() {
     // -----------------  Finding  -----------------
     // Search an element
     int target; cout << "Type the target number: "; cin >> target;
-    if (BinaryTreeSearch(l.pRoot, target)) {
+    if (Search(l.pRoot, target)) {
         cout << "FOUND!" << endl;
     }
     else {
