@@ -1,4 +1,5 @@
 #include <iostream>
+#include <algorithm>
 using namespace std;
 
 // Tree Properties
@@ -156,15 +157,34 @@ int balance(Node* pRoot) {
     else {
         // The reason we only need to extract the height of the left and right nodes
         // - The heights of those nodes are updated right away when a new child joins the family
-        return height(pRoot->left) - height(pRoot->right);
+        return height(pRoot->pLeft) - height(pRoot->pRight);
     }
 }
 
-void LL (Node* &pRoot) {
-    Node* newRoot = pRoot;
-    Node* newRootRight = newRoot->right;
+Node* LL(Node* &pRoot) {
+    Node* newRoot = pRoot->pLeft; // Set the new root as the left child
+    Node* newRootRight = newRoot->pRight; // Store the newroot right child to give it a new place
 
-    
+    newRoot->pRight = pRoot; // Set the old root to be the new root right child
+    pRoot->pLeft = newRootRight; // Give the newroot right child a new place
+
+    pRoot->height = max(height(pRoot->pLeft), height(pRoot->pRight)) + 1; // Update the height of the old root
+    newRoot->height = max(height(pRoot->pLeft), height(pRoot->pRight)) + 1; // Update the height of the new root
+
+    return newRoot;
+}
+
+Node* RR(Node* &pRoot) {
+    Node* newRoot = pRoot->pRight;
+    Node* newRootLeft = newRoot->pLeft;
+
+    newRoot->pLeft = pRoot;
+    pRoot->pLeft = newRootRight;
+
+    pRoot->height = max(height(pRoot->pLeft), height(pRoot->pRight)) + 1;   // Update the height of the old root
+    newRoot->height = max(height(pRoot->pLeft), height(pRoot->pRight)) + 1; // Update the height of the new root
+
+    return newRoot;
 }
 
 void rotation(Node* &pRoot) {
