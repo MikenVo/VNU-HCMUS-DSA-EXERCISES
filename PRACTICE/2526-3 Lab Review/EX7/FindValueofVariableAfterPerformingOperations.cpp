@@ -1,0 +1,39 @@
+#include <iostream>
+#include <vector>
+#include <string>
+using namespace std;
+
+int finalValueAfterOperations(vector<string>& operations) {
+    int total = 0;
+    for (int i = 0; i < operations.size(); i++) {
+        if (operations[i][0] == '+') {
+            total++;
+        }
+        else if (operations[i][0] == '-') {
+            total--;
+        }
+        else if (operations[i][0] == 'X') {
+            if (operations[i][1] == '+') {
+                total++;
+            }
+            else {
+                total--;
+            }
+        }
+    }
+    return total;
+}
+
+int main() {
+    vector<string> operations;
+    int n; cin >> n;
+    for (int i = 0; i < n; i++) {
+        string s;
+        cin >> s;
+        operations.push_back(s);
+    }
+    
+    cout << finalValueAfterOperations(operations) << endl;
+
+    return 0;
+}

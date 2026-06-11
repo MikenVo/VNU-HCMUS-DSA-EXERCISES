@@ -1,0 +1,1 @@
+// Problem: Given n students and score k. Find the student has that score k.
